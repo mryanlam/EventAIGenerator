@@ -11,13 +11,56 @@
 				var txtCreatureEntry = document.getElementById("creatureEntry");
 				var txtOutput = document.getElementById("txtOutput");
 				var txtIncremental = document.getElementById("incrementalID");
+				var txtEvent = document.getElementById("eventEntry");
+				var txtPhase = document.getElementById("phaseMaskEntry");
+				var txtChance = document.getElementById("chanceEntry");
+				var txtFlags = document.getElementById("flagEntry");
+				var txtParam1 = document.getElementById("param1Entry");
+				var txtParam2 = document.getElementById("param2Entry");
+				var txtParam3 = document.getElementById("param3Entry");
+				var txtParam4 = document.getElementById("param4Entry");
+				var txtAction1 = document.getElementById("action1TypeEntry");
+				var txtA1P1 = document.getElementById("action1Param1Entry");
+				var txtA1P2 = document.getElementById("action1Param2Entry");
+				var txtA1P3 = document.getElementById("action1Param3Entry");
+				var txtAction2 = document.getElementById("action2TypeEntry");
+				var txtA2P1 = document.getElementById("action2Param1Entry");
+				var txtA2P2 = document.getElementById("action2Param2Entry");
+				var txtA2P3 = document.getElementById("action2Param3Entry");
+				var txtAction3 = document.getElementById("action3TypeEntry");
+				var txtA3P1 = document.getElementById("action3Param1Entry");
+				var txtA3P2 = document.getElementById("action3Param2Entry");
+				var txtA3P3 = document.getElementById("action3Param3Entry");
+				var txtComment = document.getElementById("comentEntry");
 				//Variables
 				var name = txtCreatureEntry.value;
 				var id = txtIncremental.value;
 				if(id < 9) {
 					id = "0" + id;
 				}
-				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id='"+name+"';"+"\nINSERT INTO creature_ai_scripts VALUES\n('"+name+id+"','"+name+"','"
+				var event = txtEvent.value;
+				var phase = txtPhase.value;
+				var chance = txtChance.value;
+				var flags = txtFlags.value;
+				var param1 = txtParam1.value;
+				var param2 = txtParam2.value;
+				var param3 = txtParam3.value;
+				var param4 = txtParam4.value;
+				var action1 = txtAction1.value;
+				var a1p1 = txtA1P1.value;
+				var a1p2 = txtA1P2.value;
+				var a1p3 = txtA1P3.value;
+				var action2 = txtAction2.value;
+				var a2p1 = txtA2P1.value;
+				var a2p2 = txtA2P2.value;
+				var a2p3 = txtA2P3.value;
+				var action3 = txtAction3.value;
+				var a3p1 = txtA3P1.value;
+				var a3p2 = txtA3P2.value;
+				var a3p3 = txtA3P3.value;
+				var com = txtComment.value;
+				//prints out the SQL
+				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id='"+name+"';"+"\nINSERT INTO creature_ai_scripts VALUES\n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"');"
 			}
 		</script>
 		<link rel = "stylesheet"
@@ -25,7 +68,7 @@
 		href = "textBoxes.css" />
 	</head>
 	<body>
-		<h1>EventAI Generator for cMangos</h1>
+		<h1>EventAI Generator for CMaNGOS</h1>
 		<form action = "">
 			<fieldset>
 				<label>Enter Creature id: </label>
@@ -39,13 +82,121 @@
 					value="1"
 					id = "incrementalID" />
 				<br>
+				<label> Enter Event Type </label>
+				<input type = "number"
+					value="0"
+					id = "eventEntry" />
+				<br>
+				<label> Enter Inverse Phase Mask </label>
+				<input type = "number"
+					value="0"
+					id = "phaseMaskEntry" />
+				<br>
+				<label> Enter Chance of Occurrence </label>
+				<input type = "number"
+					min="1"
+					max="100"
+					value="100"
+					id = "chanceEntry" />
+				<br>
+				<label> Enter flags</label>
+				<input type = "number"
+					value="0"
+					id = "flagEntry" />
+				<br>
+				<label> Enter Parameter 1</label>
+				<input type = "number"
+					value="0"
+					id = "param1Entry" />
+				<br>
+				<label> Enter Parameter 2</label>
+				<input type = "number"
+					value="0"
+					id = "param2Entry" />
+				<br>
+				<label> Enter Parameter 3</label>
+				<input type = "number"
+					value="0"
+					id = "param3Entry" />
+				<br>
+				<label> Enter Parameter 4</label>
+				<input type = "number"
+					value="0"
+					id = "param4Entry" />
+				<br>
+				<label> Enter Action1 type</label>
+				<input type = "number"
+					value="0"
+					id = "action1TypeEntry" />
+				<br>
+				<label> Enter Action1 Parameter 1</label>
+				<input type = "number"
+					value="0"
+					id = "action1Param1Entry" />
+				<br>
+				<label> Enter Action1 Parameter 2</label>
+				<input type = "number"
+					value="0"
+					id = "action1Param2Entry" />
+				<br>
+				<label> Enter Action1 Parameter 3</label>
+				<input type = "number"
+					value="0"
+					id = "action1Param3Entry" />
+				<br>
+				<label> Enter Action2 type</label>
+				<input type = "number"
+					value="0"
+					id = "action2TypeEntry" />
+				<br>
+				<label> Enter Action2 Parameter 1</label>
+				<input type = "number"
+					value="0"
+					id = "action2Param1Entry" />
+				<br>
+				<label> Enter Action2 Parameter 2</label>
+				<input type = "number"
+					value="0"
+					id = "action2Param2Entry" />
+				<br>
+				<label> Enter Action2 Parameter 3</label>
+				<input type = "number"
+					value="0"
+					id = "action2Param3Entry" />
+				<br>
+				<label> Enter Action3 type</label>
+				<input type = "number"
+					value="0"
+					id = "action3TypeEntry" />
+				<br>
+				<label> Enter Action3 Parameter 1</label>
+				<input type = "number"
+					value="0"
+					id = "action3Param1Entry" />
+				<br>
+				<label> Enter Action3 Parameter 2</label>
+				<input type = "number"
+					value="0"
+					id = "action3Param2Entry" />
+				<br>
+				<label> Enter Action3 Parameter 3</label>
+				<input type = "number"
+					value="0"
+					id = "action3Param3Entry" />
+				<br>
+				<label> Enter Comment </label>
+				<input type= "text"
+					value = "EventAI Comment"
+					id = "comentEntry"</input>
+				<br>
 				<input type = "button"
 					value = "Generate SQL"
 					onclick = "genCode()"/>
 				<br>
 				<label> Output </label> <br>
-				<textarea name="Output" id="txtOutput" rows="5" cols="80"></textarea>
+				<textarea name="Output" id="txtOutput" rows="5" cols="150"></textarea>
 			</fieldset>
 		</form>
+		<p> For more information about EventAI check out the <a href="https://github.com/cmangos/issues/wiki/Creature_ai_scripts">Official Documentation</a>
 	</body>
 </html>
