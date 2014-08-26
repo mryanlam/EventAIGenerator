@@ -1,4 +1,4 @@
-EventAIGenerator
+EventAI Generator
 ================
 
-Generates the SQL neccessary for EventAI in MANGOS based on some parameters
+Generates the SQL necessary for EventAI in MANGOS based on some parameters.

@@ -10,6 +10,7 @@
 			function clearCode()
 			{
 				totalScript = null;
+				rowNum = 0;
 			}
 			
 			function addCode() 
@@ -68,10 +69,11 @@
 				var com = txtComment.value;
 				
 				if (totalScript == null)
-					totalScript = "DELETE FROM creature_ai_scripts WHERE creature_id="+name+";\nINSERT INTO creature_ai_scripts VALUES";
+					totalScript = "DELETE FROM creature_ai_scripts WHERE creature_id="+name+";\nINSERT INTO creature_ai_scripts VALUES ";
 				
 				rowNum = rowNum + 1;
 				totalScript = totalScript + "\n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"'),"
+				
 			}
 			
 			function genCode() {
