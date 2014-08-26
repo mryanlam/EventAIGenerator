@@ -60,7 +60,7 @@
 				var a3p3 = txtA3P3.value;
 				var com = txtComment.value;
 				//prints out the SQL
-				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id='"+name+"';"+"\nINSERT INTO creature_ai_scripts VALUES\n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"');"
+				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id="+name+";"+"\nINSERT INTO creature_ai_scripts VALUES\n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"');"
 			}
 		</script>
 		<link rel = "stylesheet"
