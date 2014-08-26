@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+	<head>
+		<meta charset = "UTF-8">
+		<title>EventAI</title>
+		<script type = "text/javascript">
+			//generates the SQL and outputs it
+			function genCode() 
+			{
+				//Entry Forms
+				var txtCreatureEntry = document.getElementById("creatureEntry");
+				var txtOutput = document.getElementById("txtOutput");
+				var txtIncremental = document.getElementById("incrementalID");
+				//Variables
+				var name = txtCreatureEntry.value;
+				var id = txtIncremental.value;
+				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id='"+name+"';"+"\nINSERT INTO creature_ai_scripts VALUES "
+			}
+		</script>
+		<link rel = "stylesheet"
+		type = "text/css"
+		href = "textBoxes.css" />
+	</head>
+	<body>
+		<h1>EventAI Generator for cMangos</h1>
+		<form action = "">
+			<fieldset>
+				<label>Enter Creature id: </label>
+				<input type = "text"
+					id = "creatureEntry" />
+				<br>
+				<label> Enter Incremental id (between 1 and 9): </label>
+				<input type = "number"
+					name="quantity" 
+					min="01"
+					max="09"
+					id = "incrementalID" />
+				<br>
+				<input type = "button"
+					value = "Generate SQL"
+					onclick = "genCode()"/>
+				<br>
+				<label> Output </label> <br>
+				<textarea name="Output" id="txtOutput" rows="5" cols="80"></textarea>
+			</fieldset>
+		</form>
+	</body>
+</html>
