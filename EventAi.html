@@ -14,7 +14,10 @@
 				//Variables
 				var name = txtCreatureEntry.value;
 				var id = txtIncremental.value;
-				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id='"+name+"';"+"\nINSERT INTO creature_ai_scripts VALUES "
+				if(id < 9) {
+					id = "0" + id;
+				}
+				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id='"+name+"';"+"\nINSERT INTO creature_ai_scripts VALUES\n('"+name+id+"','"+name+"','"
 			}
 		</script>
 		<link rel = "stylesheet"
@@ -26,14 +29,14 @@
 		<form action = "">
 			<fieldset>
 				<label>Enter Creature id: </label>
-				<input type = "text"
+				<input type = "number"
 					id = "creatureEntry" />
 				<br>
-				<label> Enter Incremental id (between 1 and 9): </label>
+				<label> Enter Incremental id (greater than 1): </label>
 				<input type = "number"
 					name="quantity" 
 					min="01"
-					max="09"
+					value="1"
 					id = "incrementalID" />
 				<br>
 				<input type = "button"
