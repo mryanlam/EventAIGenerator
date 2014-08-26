@@ -4,8 +4,14 @@
 		<meta charset = "UTF-8">
 		<title>EventAI</title>
 		<script type = "text/javascript">
-			//generates the SQL and outputs it
-			function genCode() 
+			var totalScript;
+		
+			function clearCode()
+			{
+				totalScript = null;
+			}
+			
+			function addCode() 
 			{
 				//Entry Forms
 				var txtCreatureEntry = document.getElementById("creatureEntry");
@@ -59,8 +65,15 @@
 				var a3p2 = txtA3P2.value;
 				var a3p3 = txtA3P3.value;
 				var com = txtComment.value;
-				//prints out the SQL
-				txtOutput.value = "DELETE FROM creature_ai_scripts WHERE creature_id="+name+";"+"\nINSERT INTO creature_ai_scripts VALUES \n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"');"
+				
+				if (totalScript == null)
+					totalScript = "DELETE FROM creature_ai_scripts WHERE creature_id="+name+";\nINSERT INTO creature_ai_scripts VALUES";
+				
+				totalScript = totalScript + "\n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"');"
+			}
+			
+			function genCode() {
+				txtOutput.value = totalScript;
 			}
 		</script>
 		<link rel = "stylesheet"
@@ -188,6 +201,14 @@
 				<input type= "text"
 					value = "EventAI Comment"
 					id = "comentEntry"</input>
+				<br>
+				<input type = "button"
+					value = "Clear"
+					onclick = "clearCode()"/>
+				<br>
+				<input type = "button"
+					value = "Add event"
+					onclick = "addCode()"/>
 				<br>
 				<input type = "button"
 					value = "Generate SQL"
