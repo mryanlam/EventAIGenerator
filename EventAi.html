@@ -5,7 +5,8 @@
 		<title>EventAI</title>
 		<script type = "text/javascript">
 			var totalScript;
-		
+			var rowNum = 0;
+			
 			function clearCode()
 			{
 				totalScript = null;
@@ -69,11 +70,21 @@
 				if (totalScript == null)
 					totalScript = "DELETE FROM creature_ai_scripts WHERE creature_id="+name+";\nINSERT INTO creature_ai_scripts VALUES";
 				
-				totalScript = totalScript + "\n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"');"
+				rowNum = rowNum + 1;
+				totalScript = totalScript + "\n('"+name+id+"','"+name+"','"+event+"','"+phase+"','"+chance+"','"+flags+"','"+param1+"','"+param2+"','"+param3+"','"+param4+"','"+action1+"','"+a1p1+"','"+a1p2+"','"+a1p3+"','"+action2+"','"+a2p1+"','"+a2p2+"','"+a2p3+"','"+action3+"','"+a3p1+"','"+a3p2+"','"+a3p3+"','"+com+"'),"
 			}
 			
 			function genCode() {
-				txtOutput.value = totalScript;
+				if(rowNum > 1)
+				{
+					var scriptLength = totalScript.length;
+					var finalScript = totalScript.substr(0,scriptLength-1);
+					finalScript = finalScript + ";"
+				} else 
+				{
+					var finalScript = totalScript;
+				}
+				txtOutput.value = finalScript;
 			}
 		</script>
 		<link rel = "stylesheet"
